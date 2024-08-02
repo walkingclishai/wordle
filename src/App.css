@@ -1,0 +1,190 @@
+@import url('https://fonts.cdnfonts.com/css/frostbites');
+
+.App{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#left, #right{
+width: 100%;
+height: 100vh;
+}
+
+#left{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 95%;
+  border-radius: 2%;
+  box-shadow: 5px 5px 10px black;
+  
+}
+
+.title-container {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  height: 100vh; 
+  overflow: hidden; 
+  font-size: 18px; 
+
+}
+
+span{
+  font-family: 'Frostbites';
+  font-size: 50px;
+  color: #3a7fba;
+  text-shadow: 3px 3px black;
+}
+
+.title-container span {
+  display: inline-block;
+  opacity: 0; 
+  transform: translateY(-100%); 
+  animation: drop 1s forwards;
+}
+
+h1, #dscrp{
+  text-align: center;
+  font-family: Tahoma;
+}
+
+.pw{
+  margin-left: auto;
+  font-size: 13px;
+  margin-top: -5px !important;
+  margin-bottom: 20px;
+  padding-right: 61px;
+  text-decoration: none;
+}
+
+
+.sign-in{
+  display: block;
+  width: 380px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+
+
+.submit, .register{
+  width: 380px;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #3a7fba;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#small-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#socials{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.facebook, .gmail, .icloud{
+color: white;
+background-color: #3a7fba;
+padding: 10px 20px;
+border: none;
+border-radius: 40%;
+box-shadow: 0 2px #999;
+}
+
+i{
+  font-size: 20px;
+}  
+
+
+/*sign up component*/
+
+#signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.sign-up{
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+#input-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 120px;
+}
+
+.full{
+  margin-right: auto;
+}
+
+.google-button{
+  background-color: #fff;
+  padding: 13px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #999;
+  cursor: pointer;
+}
+
+
+
+
+/* title animation*/
+
+@keyframes drop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-container span:nth-child(1) { animation-delay: 0s; }
+.title-container span:nth-child(2) { animation-delay: 0.2s; }
+.title-container span:nth-child(3) { animation-delay: 0.4s; }
+.title-container span:nth-child(4) { animation-delay: 0.6s; }
+.title-container span:nth-child(5) { animation-delay: 0.8s; }
+.title-container span:nth-child(6) { animation-delay: 1s; }
+
