@@ -29,28 +29,9 @@ height: 100vh;
 }
 
 .title-container {
-  display: flex;
-  justify-content: center; 
-  align-items: flex-start; 
-  height: 100vh; 
-  overflow: hidden; 
-  font-size: 18px; 
 
 }
 
-span{
-  font-family: 'Frostbites';
-  font-size: 50px;
-  color: #3a7fba;
-  text-shadow: 3px 3px black;
-}
-
-.title-container span {
-  display: inline-block;
-  opacity: 0; 
-  transform: translateY(-100%); 
-  animation: drop 1s forwards;
-}
 
 h1, #dscrp{
   text-align: center;
@@ -170,21 +151,4 @@ i{
 }
 
 
-
-
-/* title animation*/
-
-@keyframes drop {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.title-container span:nth-child(1) { animation-delay: 0s; }
-.title-container span:nth-child(2) { animation-delay: 0.2s; }
-.title-container span:nth-child(3) { animation-delay: 0.4s; }
-.title-container span:nth-child(4) { animation-delay: 0.6s; }
-.title-container span:nth-child(5) { animation-delay: 0.8s; }
-.title-container span:nth-child(6) { animation-delay: 1s; }
 

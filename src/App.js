@@ -3,6 +3,8 @@ import topImg from './assets/top.jpg'
 import './App.css';
 import React, { useState } from 'react'
 
+const word = ["W", "O", "R", "D", "L", "E"]
+
 function SignIn({switch: switchProp}){
   return(
     <>
@@ -42,7 +44,7 @@ function SignIn({switch: switchProp}){
   )
 }
 
-function SignUp(){
+function SignUp({switch: switchProp}){
   return(
    
     <>
@@ -81,7 +83,7 @@ function SignUp(){
     </button>
 
 
-        <p>Already a Member? <button>Sign in</button></p>
+        <p>Already a Member? <button onClick={switchProp}>Sign in</button></p>
 
     </form></>
   )
@@ -92,7 +94,7 @@ function App() {
   const[log, setLog] = useState(true)
 
 const Switch = () =>{
-setLog(false)
+setLog(!log)
 }
 
   return (
@@ -102,7 +104,7 @@ setLog(false)
           <img alt='wordle' src={topImg}/>
           <div className="title-container">
 
-<span>W</span><span>o</span><span>r</span><span>d</span><span>l</span><span>e</span>
+
 
 
 </div>
@@ -111,7 +113,7 @@ setLog(false)
       </div>
       <div id="right">
 
-        {log ? <SignIn switch ={Switch}/> : <SignUp/>}
+        {log ? <SignIn switch ={Switch}/> : <SignUp switch ={Switch} />}
 
     
       </div>
