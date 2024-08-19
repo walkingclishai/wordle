@@ -3,7 +3,7 @@ import topImg from './assets/top.jpg'
 import './App.css';
 import React, { useState } from 'react'
 
-const word = ["W", "O", "R", "D", "L", "E"]
+
 
 function SignIn({switch: switchProp}){
   return(
@@ -22,7 +22,7 @@ function SignIn({switch: switchProp}){
         <button className='submit' type="submit">Login</button>
 
         <div id="small-container">
-        <p>or continue with</p>
+        <p className="continue">or continue with</p>
 
         <div id="socials">
         <button className="button gmail">
@@ -37,7 +37,7 @@ function SignIn({switch: switchProp}){
         </div>
         
     </div>
-    <p className="footnote">Not a member? <button className="footnotelink"  onClick={switchProp}>Register Now</button></p>
+    <p className="footnote">Not a member? <button className="footnotelink"  onClick={switchProp}>Register now</button></p>
     </form>
     
     </>
@@ -51,27 +51,24 @@ function SignUp({switch: switchProp}){
     <h1>Sign up to Wordle</h1>
     
     <form id="signup-form">
-    <div id="input-group">
-    <div>
-    <label for="fullName">Full Name:</label>
-    <input className="sign-up small" type="text" id="fullName" name="fullName" required />
-</div>
+    
+    <div id="test">
+    <label className="label-name" for="fullName">Full Name:</label>
+    <input className="sign-up input1" type="text" id="fullName" name="fullName" required />
 
-    <div>
-    <label for="username">Username:</label>
-    <input className="sign-up small" type="text" id="username" name="username" required/>
-    </div>
+
+    <label className="label-user" for="username">Username:</label>
+    <input className="sign-up input2" type="text" id="username" name="username" required/>
+  
+    
+    <label className="label-email" for="email">Email Address:</label>
+    <input className="sign-up input3" type="email" id="email" name="email" required/>
+
+    <label className="label-pass" for="password">Password:</label>
+    <input className="sign-up input4" type="password" id="password" name="password" required/>
     </div>
 
-    <div className="full">
-    <label for="email">Email Address:</label>
-    <input className="sign-up" type="email" id="email" name="email" required/>
-    </div>
 
-    <div className="full">
-    <label for="password">Password:</label>
-    <input className="sign-up" type="password" id="password" name="password" required/>
-    </div>
       <button className='register' type="submit" value="register">Create Account</button>
 
     
@@ -83,13 +80,15 @@ function SignUp({switch: switchProp}){
     </button>
 
 
-        <p>Already a Member? <button onClick={switchProp}>Sign in</button></p>
+        <p>Already a Member? <button className="link" onClick={switchProp}>Sign in</button></p>
 
     </form></>
   )
 }
 
 function App() {
+
+  const word = ["W", "O", "R", "D", "L", "E"]
 
   const[log, setLog] = useState(true)
 
@@ -105,7 +104,14 @@ setLog(!log)
           <div className="title-container">
 
 
-
+          <div id="game">
+<div id='box-0' className='box'>{word[0]}</div>
+<div id='box-1' className='box'>{word[1]}</div>
+<div id='box-2'className='box'>{word[2]}</div>
+<div id='box-3' className='box'>{word[3]}</div>
+<div id='box-4' className='box'>{word[4]}</div>
+<div id='box-4' className='box'>{word[5]}</div>
+</div>
 
 </div>
           <img alt='alt' src={bottomImg} height="260px"/>

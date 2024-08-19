@@ -1,5 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/frostbites');
 
+*{
+  font-family: Tahoma;
+}
+
 .App{
   display: flex;
   flex-direction: row;
@@ -23,19 +27,13 @@ height: 100vh;
   flex-direction: column;
   width: 95%;
   height: 95%;
+  border: none;
   border-radius: 2%;
-  box-shadow: 5px 5px 10px black;
-  
-}
-
-.title-container {
-
 }
 
 
 h1, #dscrp{
   text-align: center;
-  font-family: Tahoma;
 }
 
 .pw{
@@ -50,11 +48,11 @@ h1, #dscrp{
 
 .sign-in{
   display: block;
-  width: 380px;
+  width: 300px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 15px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
@@ -101,13 +99,31 @@ color: white;
 background-color: #3a7fba;
 padding: 10px 20px;
 border: none;
-border-radius: 40%;
+border-radius: 50%;
 box-shadow: 0 2px #999;
 }
 
+.facebook:hover, .gmail:hover, .icloud:hover{
+background-color: #357ae8; 
+box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+}
+
 i{
-  font-size: 20px;
+  font-size: 19px;
 }  
+.continue{
+  text-align: center;
+}
+.footnotelink, .link{
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  background-color: #fff;
+  color: #3a7fba;
+  padding: 0;
+  cursor: pointer;
+}
 
 
 /*sign up component*/
@@ -123,22 +139,65 @@ i{
 
 .sign-up{
   display: block;
-  padding: 10px;
+  padding: 7px;
   border: 1px solid #ccc;
-  border-radius: 15px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
-#input-group{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 120px;
+#test{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 10px;
 }
 
-.full{
-  margin-right: auto;
+/* grid placements */
+
+.label-name{
+  grid-column: 1;
+  grid-row: 1;
 }
+
+.input1{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.label-user{
+  grid-column: 2;
+  grid-row: 1
+}
+
+.input2{
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.label-email{
+  grid-column: 1 / span 2;
+  grid-row: 3;
+
+}
+
+.input3{
+  grid-column: 1 / span 2;
+  grid-row: 4;
+}
+
+.label-pass{
+  grid-column: 1 / span 2;
+  grid-row: 5;
+
+}
+
+.input4{
+  grid-column: 1 / span 2;
+  grid-row: 6;
+}
+
+
+/*********/
 
 .google-button{
   background-color: #fff;
@@ -150,5 +209,70 @@ i{
   cursor: pointer;
 }
 
+/* title */
 
+#game{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  margin: 5px;
+}
 
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+  padding: 2px;
+  color: #fff;
+  background-color: #3a7fba;
+  animation: flipIn 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes flipIn {
+  0% {
+    transform: rotateY(90deg);
+    background-color: #fff;
+    color: #000;
+    opacity: 0;
+  }
+  50% {
+    transform: rotateY(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.box:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.box:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.box:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.box:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.box:nth-child(5) {
+  animation-delay: 1.6s;
+}
+
+.box:nth-child(6) {
+  animation-delay: 2s;
+}
