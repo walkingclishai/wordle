@@ -2,10 +2,34 @@ import bottomImg from './assets/bottom.jpg'
 import topImg from './assets/top.jpg'
 import './App.css';
 import React, { useState } from 'react'
+import axios from 'axios'
 
 
 
 function SignIn({switch: switchProp}){
+
+const [user, setUser] = useState('');
+const [password, setPassword] = useState('');
+
+const handleLogIn = async(e) =>{
+e.preventDefault();
+
+try {
+  axios.post('http://localhost:8081/user', {username: user, password: password})
+  .then(res => {
+    if(res.data === "Login Successfully"){
+      alert(res.data)
+    } else {
+      alert(res.data)
+    }
+  }).catch(err =>{console.log("it's not your fault:", err)})
+} catch (error) {
+  console.log("now it's your fault", error)
+}
+}
+
+
+
   return(
     <>
     
@@ -14,12 +38,12 @@ function SignIn({switch: switchProp}){
     
     <form>
         
-        <input className="sign-in" type="text" id="username" name="username" placeholder="   Username" required/>
+        <input className="sign-in" type="text" id="username" name="username" placeholder="   Username" onChange={(e) => setUser(e.target.value)} value={user} required/>
 
-        <input className="sign-in"  type="password" id="password" name="password" placeholder="   Password" required/>
+        <input className="sign-in"  type="password" id="password" name="password" placeholder="   Password"  onChange={(e) => setPassword(e.target.value)} value={password} required/>
         <a href="wwww.google.com" target="_blank" className="pw">Forgot Password?</a>
 
-        <button className='submit' type="submit">Login</button>
+        <button className='submit' type="submit" onClick={handleLogIn}>Login</button>
 
         <div id="small-container">
         <p className="continue">or continue with</p>
