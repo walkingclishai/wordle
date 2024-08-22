@@ -69,6 +69,28 @@ try {
 }
 
 function SignUp({switch: switchProp}){
+
+    const [name, setName] = useState('');
+    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    const handleSignUp = async(e) =>{
+    e.preventDefault();
+    console.log(user, password, email, name)
+    try {
+      axios.post('http://localhost:8081/add', {username: user, password: password, fullname: name, email: email})
+      .then(res => {
+        if(res.result === "User added successfully"){
+          alert(res.result)
+        } else {
+          alert( 'test', res.result)
+        }
+      }).catch(err =>{console.log("it's not your fault:", err)})
+    } catch (error) {
+      console.log("now it's your fault", error)
+    }
+    }
   return(
    
     <>
@@ -78,22 +100,22 @@ function SignUp({switch: switchProp}){
     
     <div id="test">
     <label className="label-name" for="fullName">Full Name:</label>
-    <input className="sign-up input1" type="text" id="fullName" name="fullName" required />
+    <input className="sign-up input1" type="text" id="fullName" name="fullName" onChange={(e) => setName(e.target.value)} value={name} required />
 
 
     <label className="label-user" for="username">Username:</label>
-    <input className="sign-up input2" type="text" id="username" name="username" required/>
+    <input className="sign-up input2" type="text" id="username" name="username" onChange={(e) => setUser(e.target.value)} value={user} required/>
   
     
     <label className="label-email" for="email">Email Address:</label>
-    <input className="sign-up input3" type="email" id="email" name="email" required/>
+    <input className="sign-up input3" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
 
     <label className="label-pass" for="password">Password:</label>
-    <input className="sign-up input4" type="password" id="password" name="password" required/>
+    <input className="sign-up input4" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} required/>
     </div>
 
 
-      <button className='register' type="submit" value="register">Create Account</button>
+      <button className='register' type="submit" value="register" onClick={handleSignUp}>Create Account</button>
 
     
         <p>or</p>
