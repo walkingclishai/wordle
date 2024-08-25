@@ -118,20 +118,20 @@ function SignUp({switch: switchProp}){
     if(valid == false){
       return
     }
-    
+  
     try {
       axios.post('http://localhost:8081/add', {username: user, password: password, fullname: name, email: email})
       .then(res => {
-        if(res.result === "User added successfully"){
-          alert(res.result)
+        if(res.data === "User added successfully"){
+          alert(res.data)
         } else {
-          alert( 'test', res.result)
+          alert(res.data)
         }
       }).catch(err =>{console.log("it's not your fault:", err)})
     } catch (error) {
       console.log("now it's your fault", error)
     }
-    }
+    } 
   return(
    
     <>
