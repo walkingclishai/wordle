@@ -37,10 +37,16 @@ try {
         <p id="dscrp">Challenge your mind and have fun with Wordle, the ultimate word game!</p>
     
     <form>
-        
-        <input className="sign-in" type="text" id="username" name="username" placeholder="   Username" onChange={(e) => setUser(e.target.value)} value={user} required/>
+      
+    <div class="input-container">
+        <i className="login__icon fas fa-user"></i>
+        <input type="text" id="username" name="username" placeholder="Username" onChange={(e) => setUser(e.target.value)} value={user} required/>
+</div>
+        <div className="input-container">
+        <i className="login__icon fas fa-lock"></i>
+        <input type="password" id="password" name="password" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} value={password} required/>
+        </div>
 
-        <input className="sign-in"  type="password" id="password" name="password" placeholder="   Password"  onChange={(e) => setPassword(e.target.value)} value={password} required/>
         <a href="wwww.google.com" target="_blank" className="pw">Forgot Password?</a>
 
         <button className='submit' type="submit" onClick={handleLogIn}>Login</button>
@@ -74,10 +80,45 @@ function SignUp({switch: switchProp}){
     const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [valid, setValid] = useState(true);
     
+    const handleTests = () =>{
+      if(name.length < 4){
+        alert ('Please enter your full name')
+        setValid(false)
+        return
+        }
+      if(user.length < 5){
+        alert('Username should be at least five characters')
+        setValid(false)
+        return
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+      if(!emailRegex.test(email)){
+        alert('Invalid email address')
+        setValid(false)
+        return
+      }
+
+      const passwordRegex = /^[A-Za-z0-9]*$/;
+      if(!passwordRegex.test(password)){
+      alert('A password should include at least one uppercase letter, a number, and a special character');
+      setValid(false)
+      return
+      }
+      setValid(true)
+      }
+
+    
+
     const handleSignUp = async(e) =>{
     e.preventDefault();
     console.log(user, password, email, name)
+    handleTests()
+    if(valid == false){
+      return
+    }
+    
     try {
       axios.post('http://localhost:8081/add', {username: user, password: password, fullname: name, email: email})
       .then(res => {
@@ -121,8 +162,13 @@ function SignUp({switch: switchProp}){
         <p>or</p>
 
 
-        <button className="google-button">
-        <i className="fab fa-google"></i> Sign up with Google
+        <button className="google-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 533.5 544.3" class="google-icon">
+        <path fill="#4285F4" d="M533.5 278.4c0-17.4-1.4-34.2-4.1-50.4H272v95.2h147.3c-6.3 34.1-25 63-53.3 82.3v68h86.2c50.5-46.5 79.4-115 79.4-196.1z"/>
+        <path fill="#34A853" d="M272 544.3c72.4 0 133.1-23.9 177-64.9l-86.2-68c-23.9 16-54.4 25.4-90.8 25.4-69.8 0-128.8-47-149.5-110.3H36.8v69.2C81.7 486.3 168.3 544.3 272 544.3z"/>
+        <path fill="#FBBC05" d="M122.5 325.7c-4.8-14.4-7.6-29.7-7.6-45.7s2.8-31.3 7.6-45.7V151.3H36.8c-23.2 46.2-23.2 101.3 0 147.5l85.7 27.2z"/>
+        <path fill="#EA4335" d="M272 107.3c38.8 0 73.7 13.3 101.3 39.6l75.6-75.6C402.7 24 342.4 0 272 0 168.3 0 81.7 58 36.8 151.3l85.7 69.2c20.7-63.3 79.7-110.3 149.5-110.3z"/>
+    </svg>
+           Sign up with Google
     </button>
 
 

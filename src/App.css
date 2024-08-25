@@ -56,7 +56,35 @@ h1, #dscrp{
   box-sizing: border-box;
 }
 
+.input-container {
+  position: relative;
+  width: 80%;
+}
 
+.input-container i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-100%);
+  color: #aaa;
+}
+
+.input-container input {
+  width: 100%;
+  padding-left: 30px;
+  height: 40px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.input-container input:active,
+.input-container input:focus,
+.input-container input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
 
 .submit, .register{
   width: 380px;
@@ -202,11 +230,15 @@ i{
 .google-button{
   background-color: #fff;
   padding: 13px 30px;
-  font-size: 16px;
+  font-size: 2px;
   border: none;
   border-radius: 20px;
   box-shadow: 2px 2px 10px #999;
   cursor: pointer;
+}
+
+.google-button .google-icon{
+  font-size: 2px;
 }
 
 /* title */
