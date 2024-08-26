@@ -67,6 +67,7 @@ h1, #dscrp{
   top: 50%;
   transform: translateY(-100%);
   color: #aaa;
+  font-size: 16px;
 }
 
 .input-container input {
@@ -97,6 +98,11 @@ h1, #dscrp{
   cursor: pointer;
   font-size: 16px;
 }
+.submit:hover, .register:hover{
+  cursor: pointer;
+  background-color: #6A679E; 
+  box-shadow: 4px 4px 15px #666;
+}
 
 form {
   display: flex;
@@ -119,27 +125,27 @@ form {
 #socials{
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 25px;
+  list-style-type: none;
 }
 
 .facebook, .gmail, .icloud{
-color: white;
-background-color: #3a7fba;
-padding: 10px 20px;
 border: none;
-border-radius: 50%;
-box-shadow: 0 2px #999;
+background-color: transparent;
+transition: background-color 0.3s, transform 0.3s;
 }
 
 .facebook:hover, .gmail:hover, .icloud:hover{
-background-color: #357ae8; 
-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.2);
 cursor: pointer;
 }
 
-i{
-  font-size: 19px;
-}  
+.button svg{
+  width: 30px;
+  height: 30px;
+}
+
+ 
 .continue{
   text-align: center;
 }
@@ -229,16 +235,19 @@ i{
 
 .google-button{
   background-color: #fff;
-  padding: 13px 30px;
-  font-size: 2px;
+  padding: 13px 20px;
+  font-size: 15px;
   border: none;
   border-radius: 20px;
   box-shadow: 2px 2px 10px #999;
   cursor: pointer;
 }
 
-.google-button .google-icon{
-  font-size: 2px;
+.google-button .google-icon {
+  width: 24px;  
+  height: 18px; 
+  margin-bottom: -3px;
+  margin-right: 10px;
 }
 
 /* title */
