@@ -1,7 +1,7 @@
 import bottomImg from './assets/bottom.jpg'
 import topImg from './assets/top.jpg'
 import './App.css';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
@@ -10,6 +10,23 @@ function SignIn({switch: switchProp}){
 
 const [user, setUser] = useState('');
 const [password, setPassword] = useState('');
+const [error, setError] = useState('')
+useEffect(() =>{
+handleErrors()
+setError('')
+},[user, password])
+
+const handleErrors = () =>{
+  const button = document.getElementById('btn')
+  if(user.length >= 5 && password.length >= 8){
+   
+   button.disabled = false;
+   button.style.backgroundColor = '#3a7fba';
+  } else{
+    button.disabled = true;
+    button.style.backgroundColor = 'grey';
+  }
+}
 
 const handleLogIn = async(e) =>{
 e.preventDefault();
@@ -20,7 +37,8 @@ try {
     if(res.data === "Login Successfully"){
       alert(res.data)
     } else {
-      alert(res.data)
+      setError(res.data)
+
     }
   }).catch(err =>{console.log("it's not your fault:", err)})
 } catch (error) {
@@ -40,16 +58,16 @@ try {
       
     <div class="input-container">
         <i className="login__icon fas fa-user"></i>
-        <input type="text" id="username" name="username" placeholder="Username" onChange={(e) => setUser(e.target.value)} value={user} required/>
+        <input type="text" id="username" name="username" placeholder="Username" onChange={(e) => {setUser(e.target.value)}} value={user} required/>
 </div>
         <div className="input-container">
         <i className="login__icon fas fa-lock"></i>
-        <input type="password" id="password" name="password" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} value={password} required/>
+        <input type="password" id="password" name="password" placeholder="Password"  onChange={(e) => {setPassword(e.target.value)}} value={password} required/>
         </div>
-
+        {error.length < 1? <></> : <div id="error-login">{error}</div>}
         <a href="wwww.google.com" target="_blank" className="pw">Forgot Password?</a>
 
-        <button className='submit' type="submit" onClick={handleLogIn}>Login</button>
+        <button id="btn" className='submit' type="submit" onClick={handleLogIn}>Login</button>
 
         <div id="small-container">
         <p className="continue">or continue with</p>
