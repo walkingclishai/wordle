@@ -107,6 +107,7 @@ h1, #dscrp{
   font-size: 13px;
   margin-top: -7px;
   
+  
 }
 /*
 .submit:hover, .register:hover{
@@ -148,7 +149,7 @@ transition: background-color 0.3s, transform 0.3s;
 }
 
 .facebook:hover, .gmail:hover, .icloud:hover{
-  transform: scale(1.2);
+transform: scale(1.2);
 cursor: pointer;
 }
 

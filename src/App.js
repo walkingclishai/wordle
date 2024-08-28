@@ -129,22 +129,29 @@ function SignUp({switch: switchProp}){
     const handleName = () =>{
       if(name.length < 4){
         setError('Please enter your full name')
+        } else{
+          setError('')
         }}
     const handleUser = () =>{
       if(user.length < 5){
         seterrUser('Username should be at least five characters')
-      
+      } else{
+        seterrUser('')
       }}
     const handleEmail = () =>{
       const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
       if(!emailRegex.test(email)){
         seterrEmail('Invalid email address')
+      } else{
+        seterrEmail('')
       }}
     const handlePassword = () =>{
       const passwordRegex = /^[A-Za-z0-9]*$/;
-      if(!passwordRegex.test(password)){
-      seterrPassword('A password should include at least one uppercase letter, a number, and a special character');
+      if(!passwordRegex.test(password) || password.length < 8){
+      seterrPassword('Weak password');
       
+      } else{
+        seterrPassword('')
       }}
 
     const handleTests = () =>{
@@ -188,19 +195,19 @@ function SignUp({switch: switchProp}){
     <div id="test">
     <label className="label-name" for="fullName">Full Name:</label>
     <input className="sign-up input1" type="text" id="fullName" name="fullName" onBlur={handleName} onChange={(e) => setName(e.target.value)} value={name} required />
-    <div id="errname" className='idk'>{errname}</div>
+    {errname.length > 0? <div id="errname" className='idk'>{errname}</div> : <></>}
 
     <label className="label-user" for="username">Username:</label>
     <input className="sign-up input2" type="text" id="username" name="username" onBlur={handleUser} onChange={(e) => setUser(e.target.value)} value={user} required/>
-    <div id="erruser" className='idk'>{erruser}</div>
+    {erruser.length > 0? <div id="erruser" className='idk'>{erruser}</div> : <></>}
     
     <label className="label-email" for="email">Email Address:</label>
     <input className="sign-up input3" type="email" id="email" name="email" onBlur={handleEmail} onChange={(e) => setEmail(e.target.value)} value={email} required/>
-    <div id="erremail" className='idk'>{erremail}</div>
+    {erremail.length > 0? <div id="erremail" className='idk'>{erremail}</div> : <></>}
 
     <label className="label-pass" for="password">Password:</label>
     <input className="sign-up input4" type="password" id="password" name="password" onBlur={handlePassword} onChange={(e) => setPassword(e.target.value)} value={password} required/>
-    <div id="errpassword" className='idk'>{errpassword}</div>
+    {errpassword.length > 0? <div id="errpassword" className='idk'>{errpassword}</div> : <></>}
     </div>
 
 
