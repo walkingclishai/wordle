@@ -22,9 +22,11 @@ const handleErrors = () =>{
    
    button.disabled = false;
    button.style.backgroundColor = '#3a7fba';
+   button.style.cursor = 'pointer';
   } else{
     button.disabled = true;
     button.style.backgroundColor = 'grey';
+    button.style.cursor = 'not-allowed';
   }
 }
 
@@ -105,40 +107,60 @@ function SignUp({switch: switchProp}){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [valid, setValid] = useState(true);
-    
-    const handleTests = () =>{
-      if(name.length < 4){
-        alert ('Please enter your full name')
-        setValid(false)
-        return
-        }
-      if(user.length < 5){
-        alert('Username should be at least five characters')
-        setValid(false)
-        return
+    const [errname, setError] = useState('');
+    const [erruser, seterrUser] = useState('');
+    const [erremail, seterrEmail] = useState('');
+    const [errpassword, seterrPassword] = useState('');
+
+    useEffect(() =>{
+
+      const signUpButton = document.getElementById('signup-button');
+      if(name.length >= 4 && user.length >= 5 && email.length >= 8 && password.length >= 8){
+       signUpButton.disabled = false;
+       signUpButton.style.backgroundColor = '#3a7fba';
+       signUpButton.style.cursor = 'pointer';
+      } else {
+      signUpButton.disabled = true;
+      signUpButton.style.backgroundColor = 'grey';
+      signUpButton.style.cursor = 'not-allowed';
       }
+      },[name, user, email, password])
+    
+    const handleName = () =>{
+      if(name.length < 4){
+        setError('Please enter your full name')
+        }}
+    const handleUser = () =>{
+      if(user.length < 5){
+        seterrUser('Username should be at least five characters')
+      
+      }}
+    const handleEmail = () =>{
       const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
       if(!emailRegex.test(email)){
-        alert('Invalid email address')
-        setValid(false)
-        return
-      }
-
+        seterrEmail('Invalid email address')
+      }}
+    const handlePassword = () =>{
       const passwordRegex = /^[A-Za-z0-9]*$/;
       if(!passwordRegex.test(password)){
-      alert('A password should include at least one uppercase letter, a number, and a special character');
+      seterrPassword('A password should include at least one uppercase letter, a number, and a special character');
+      
+      }}
+
+    const handleTests = () =>{
+      if(errname.length > 0 || erruser.length > 0 || erremail.length > 0 || errpassword.length > 0){
       setValid(false)
-      return
+      } else{
+        setValid(true)
       }
-      setValid(true)
-      }
+    }
 
     
 
     const handleSignUp = async(e) =>{
     e.preventDefault();
     console.log(user, password, email, name)
-    handleTests()
+    handleTests();
     if(valid == false){
       return
     }
@@ -165,22 +187,24 @@ function SignUp({switch: switchProp}){
     
     <div id="test">
     <label className="label-name" for="fullName">Full Name:</label>
-    <input className="sign-up input1" type="text" id="fullName" name="fullName" onChange={(e) => setName(e.target.value)} value={name} required />
-
+    <input className="sign-up input1" type="text" id="fullName" name="fullName" onBlur={handleName} onChange={(e) => setName(e.target.value)} value={name} required />
+    <div id="errname" className='idk'>{errname}</div>
 
     <label className="label-user" for="username">Username:</label>
-    <input className="sign-up input2" type="text" id="username" name="username" onChange={(e) => setUser(e.target.value)} value={user} required/>
-  
+    <input className="sign-up input2" type="text" id="username" name="username" onBlur={handleUser} onChange={(e) => setUser(e.target.value)} value={user} required/>
+    <div id="erruser" className='idk'>{erruser}</div>
     
     <label className="label-email" for="email">Email Address:</label>
-    <input className="sign-up input3" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
+    <input className="sign-up input3" type="email" id="email" name="email" onBlur={handleEmail} onChange={(e) => setEmail(e.target.value)} value={email} required/>
+    <div id="erremail" className='idk'>{erremail}</div>
 
     <label className="label-pass" for="password">Password:</label>
-    <input className="sign-up input4" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} required/>
+    <input className="sign-up input4" type="password" id="password" name="password" onBlur={handlePassword} onChange={(e) => setPassword(e.target.value)} value={password} required/>
+    <div id="errpassword" className='idk'>{errpassword}</div>
     </div>
 
 
-      <button className='register' type="submit" value="register" onClick={handleSignUp}>Create Account</button>
+      <button id="signup-button" className='register' type="submit" value="register" onClick={handleSignUp}>Create Account</button>
 
     
         <p>or</p>

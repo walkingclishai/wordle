@@ -91,18 +91,30 @@ h1, #dscrp{
   width: 380px;
   padding: 10px;
   margin-top: 15px;
-  background-color: grey;
+  background-color: #ccc;
   color: white;
   border: none;
   border-radius: 15px;
-  cursor: pointer;
+  cursor: not-allowed;
   font-size: 16px;
+
 }
+
+.idk{
+  height: 24px;
+  width: 100%;
+  color: red;
+  font-size: 13px;
+  margin-top: -7px;
+  
+}
+/*
 .submit:hover, .register:hover{
   cursor: pointer;
   background-color: #6A679E; 
   box-shadow: 4px 4px 15px #666;
 }
+*/
 
 form {
   display: flex;
@@ -205,6 +217,10 @@ cursor: pointer;
   grid-column: 1;
   grid-row: 2;
 }
+#errname{
+  grid-column: 1;
+  grid-row: 3;
+}
 
 .label-user{
   grid-column: 2;
@@ -216,28 +232,42 @@ cursor: pointer;
   grid-row: 2;
 }
 
+#erruser{
+  grid-column: 2;
+  grid-row: 3;
+}
+
 .label-email{
   grid-column: 1 / span 2;
-  grid-row: 3;
+  grid-row: 4;
 
 }
 
 .input3{
   grid-column: 1 / span 2;
-  grid-row: 4;
+  grid-row: 5;
+}
+
+#erremail{
+  grid-column: 1 / span 2;
+  grid-row: 6;
 }
 
 .label-pass{
   grid-column: 1 / span 2;
-  grid-row: 5;
+  grid-row: 7;
 
 }
 
 .input4{
   grid-column: 1 / span 2;
-  grid-row: 6;
+  grid-row: 8;
 }
 
+#errpassword{
+  grid-column: 1 / span 2;
+  grid-row: 9;
+}
 
 /*********/
 
